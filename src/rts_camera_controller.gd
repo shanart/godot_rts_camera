@@ -37,7 +37,7 @@ export var allow_pan: bool = true
 # PARAMS
 ########################
 # movement
-onready var tween = $Tween
+#onready var tween = $Tween
 var _lock_movement: bool = false
 # zoom
 onready var camera = $Elevation/Camera
@@ -153,14 +153,14 @@ func _pan(delta: float) -> void:
 	_translate_position(-velocity)
 
 
-func _jump_to_position(locaiton: Vector3, duration: float) -> void:
-	_lock_movement = true
-	locaiton.y = 0
-	tween.interpolate_property(
-		self, "translation", translation, locaiton,
-		duration, Tween.TRANS_SINE, Tween.EASE_OUT
-	)
-	tween.start()
+#func _jump_to_position(locaiton: Vector3, duration: float) -> void:
+#	_lock_movement = true
+#	locaiton.y = 0
+#	tween.interpolate_property(
+#		self, "translation", translation, locaiton,
+#		duration, Tween.TRANS_SINE, Tween.EASE_OUT
+#	)
+#	tween.start()
 
 
 ##############################
