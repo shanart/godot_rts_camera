@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Car.fbx" type="PackedScene" id=1]
+
+[node name="Main" type="Node"]
+
+[node name="World" type="Spatial" parent="."]
+
+[node name="Scene" type="Spatial" parent="World"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.40854, 0 )
+
+[node name="Car" parent="World/Scene" instance=ExtResource( 1 )]
+transform = Transform( 0.99402, -0.00457737, -0.109101, 0.0048406, 0.999986, 0.00214786, 0.109089, -0.00266316, 0.994028, 0.431242, 4.41437, -3.45322 )
+
+[node name="Car2" parent="World/Scene" instance=ExtResource( 1 )]
+transform = Transform( 0.614395, 0, 0.788998, 0, 1, 0, -0.788998, 0, 0.614395, 1.384, 4.41437, -10.8057 )
+
+[node name="Car3" parent="World/Scene" instance=ExtResource( 1 )]
+transform = Transform( 0.562127, 0, -0.827051, 0, 1, 0, 0.827051, 0, 0.562127, -8.18078, 4.41437, -8.10098 )
+
+[node name="RTSCameraController" type="Spatial" parent="World"]
+
+[node name="Elevation" type="Spatial" parent="World/RTSCameraController"]
+transform = Transform( 1, 0, 0, 0, 0.827365, 0.561665, 0, -0.561665, 0.827365, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="World/RTSCameraController/Elevation"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.564 )
