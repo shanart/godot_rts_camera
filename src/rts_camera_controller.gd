@@ -94,7 +94,7 @@ func _zoom(delta: float) -> void:
 	# zoom
 	camera.translation.z = new_zoom
 	# move the camera we are pointing at the same location
-	if zoom_to_curse:
+	if zoom_to_curse and pointing_at != null:
 		_realign_camera(pointing_at)
 		
 	# stop scroll
