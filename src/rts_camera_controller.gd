@@ -8,7 +8,7 @@ export (int, 0, 90) var max_elevation_angle = 90
 export (float, 0, 1000, 0.1) var rotation_speed = 20
 # flags
 export (bool) var allow_rotation = true
-
+onready var elevation = $Elevation
 
 # params
 var _last_mouse_position = Vector2()
@@ -57,6 +57,7 @@ func _rotate(delta: float) -> void:
 	# use horisontal desplacment to rotate
 	_rotate_left_right(delta, displacment.x)
 	# use vertical desplacment to evelate
+	_elevate(delta, displacment.y)
 
 
 # HELPERS
@@ -68,3 +69,15 @@ func _get_mouse_desplacment() -> Vector2:
 
 func _rotate_left_right(delta: float, val: float) -> void:
 	rotation_degrees.y += val * delta * rotation_speed
+
+func _elevate(delta: float, val: float) -> void:
+	# calculate new elevation
+	var new_elevation = elevation.rotation_degrees.x + val * delta * rotation_speed
+	# clamp the new elevation
+	new_elevation = clamp(
+		new_elevation,
+		-max_elevation_angle,
+		-min_elevation_angle
+	)
+	# set the new elevation based on clamped value
+	elevation.rotation_degrees.x = new_elevation
