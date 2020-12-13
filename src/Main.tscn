@@ -23,8 +23,6 @@ transform = Transform( 0.562127, 0, -0.827051, 0, 1, 0, 0.827051, 0, 0.562127, -
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14271, 0, -0.639184 )
 script = ExtResource( 2 )
 movement_speed = 20.0
-zoom_to_curse = true
-inverted_y = true
 
 [node name="Elevation" type="Spatial" parent="World/RTSCameraController"]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
