@@ -8,11 +8,12 @@ export (int, 0, 90) var max_elevation_angle = 90
 export (float, 0, 1000, 0.1) var rotation_speed = 20
 # flags
 export (bool) var allow_rotation = true
-onready var elevation = $Elevation
+export (bool) var inverted_y = false
 
 # params
 var _last_mouse_position = Vector2()
 var _is_rotating = false
+onready var elevation = $Elevation
 
 # OVERWRITE FUNCTIONS
 func _process(delta: float) -> void:
@@ -72,7 +73,13 @@ func _rotate_left_right(delta: float, val: float) -> void:
 
 func _elevate(delta: float, val: float) -> void:
 	# calculate new elevation
-	var new_elevation = elevation.rotation_degrees.x + val * delta * rotation_speed
+	var new_elevation = elevation.rotation_degrees.x
+	
+	if inverted_y:
+		new_elevation += val * delta * rotation_speed
+	else:
+		new_elevation -= val * delta * rotation_speed
+		
 	# clamp the new elevation
 	new_elevation = clamp(
 		new_elevation,
